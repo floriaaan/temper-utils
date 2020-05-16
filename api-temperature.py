@@ -15,7 +15,7 @@ def http_get(url):
         return False
 
 def http_post(probe_id, temp, humidity):
-    url = 'http://localhost:5000/temper/api/v1/measure/'
+    url = 'http://floriaaan.alwaysdata.net/temper/api/v1/measure/'
     data = {
         'probe' : probe_id,
         'temperature' : temp,

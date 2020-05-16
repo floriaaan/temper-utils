@@ -1,11 +1,10 @@
 import requests
 import random
 import json
-
-
+import time
 
 def http_post(probe_id, temp, humidity):
-    url = 'http://localhost:5000/temper/api/v1/measure/'
+    url = 'http://floriaaan.alwaysdata.net/temper/api/v1/measure/'
     data = {
         'probe' : probe_id,
         'temperature' : temp,
@@ -27,3 +26,5 @@ while True:
         exit()
     except:
         print("!!!ERROR!!!")
+
+    time.sleep(3)
