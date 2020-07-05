@@ -15,7 +15,7 @@ def http_get(url):
         return False
 
 def http_post(probe_id, temp, humidity):
-    url = 'http://floriaaan.alwaysdata.net/temper/api/v1/measure/'
+    url = 'http://localhost:8000/api/v1/measure/'
     data = {
         'probe' : probe_id,
         'temperature' : temp,
@@ -29,13 +29,13 @@ def http_post(probe_id, temp, humidity):
 while True:
     try:
         response = http_get("http://api.openweathermap.org/data/2.5/weather?q=Rouen&appid=" + os.getenv('OWEATHER_API_KEY'))
-        probe = 3
+        probe = 2
         temp = response['main']['temp'] - 273.15
         humid = response['main']['humidity']
         http_post(probe, temp, humid)
         print("POST: Sonde:"+ str(probe) + " + Temp :" + str(temp) + ' + Humid : ' + str(humid))
     except KeyboardInterrupt:
-        exit()
+        exit() 
     except Exception as e:
         print("!!!ERROR!!! - %s" % str(e))
-    time.sleep(120)
+    time.sleep(20)
