@@ -25,6 +25,7 @@ def http_post(probe_id, temp, humidity):
         'charset': 'utf-8'
     }
     resp = requests.post(url, json=data, headers=headers)
+    print(resp.text)
 
 while True:
     try:
@@ -33,7 +34,6 @@ while True:
         temp = response['main']['temp'] - 273.15
         humid = response['main']['humidity']
         http_post(probe, temp, humid)
-        print("POST: Sonde:"+ str(probe) + " + Temp :" + str(temp) + ' + Humid : ' + str(humid))
     except KeyboardInterrupt:
         exit() 
     except Exception as e:
